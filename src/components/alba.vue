@@ -8,13 +8,6 @@
        <li>CONTACT</li>
        <li>MORE</li>
      </ul>
-
    </div>
-
-
-
-
-
-
   </div>
 </template>
