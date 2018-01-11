@@ -6,12 +6,13 @@
           <div class="svg-holder">
             <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve" >
-          <path fill="#707487" d="M262.7,243.2v50.4c0,3.6-2.9,6.5-6.5,6.5H43.8c-3.6,0-6.5-2.9-6.5-6.5v-50.4c0-50.2,33.3-93.1,78.9-107.5
-            c-22.8-12.2-38.5-35.8-38.5-63.4c0-41.2,34.4-74.2,76-72.1c36.4,1.9,66,31.1,68.3,67.5c1.9,29.6-14.3,55.3-38.3,68.1
-            C229.4,150.1,262.7,192.9,262.7,243.2z"/>
+            <path fill="#707487" d="M262.7,243.2v50.4c0,3.6-2.9,6.5-6.5,6.5H43.8c-3.6,0-6.5-2.9-6.5-6.5v-50.4c0-50.2,33.3-93.1,78.9-107.5
+              c-22.8-12.2-38.5-35.8-38.5-63.4c0-41.2,34.4-74.2,76-72.1c36.4,1.9,66,31.1,68.3,67.5c1.9,29.6-14.3,55.3-38.3,68.1
+              C229.4,150.1,262.7,192.9,262.7,243.2z"/>
           </svg>
           </div>
-         <input type="text" placeholder="Username">
+         <input type="text" placeholder="Username" v-model="message">
+          <span class="form-group__message" v-if="$v.message.$error">Field is required</span>
         </div>
         <div class="emri-wrapper">
           <div class="svg-holder">
@@ -24,9 +25,9 @@
             C185.4,214.4,176.4,226.4,164,231.2z"/>
           </svg>
           </div>
-          <input type="password" placeholder="Password">
+          <input type="password" placeholder="Password" v-model="password">
         </div>
-        <button @click="login">LOGIN</button>
+        <button @click="login" >LOGIN</button>
       </div>
       <div class=" footer-wrapper">
         <div class="footer">
@@ -42,12 +43,26 @@
 </template>
 
 <script type="text/babel">
+  import { required } from 'vuelidate/lib/validators'
   export default {
+    data () {
+      return {
+        message: '',
+        password: ''
+      }
+    },
     methods: {
       login () {
-        setTimeout(() => {
-          this.$router.push({name: 'dashboard'})
-        }, 300)
+        this.$v.message.$touch()
+        // setTimeout(() => {
+        //   this.$router.push({name: 'dashboard'})
+        // }, 300)
+        console.log(this.$v.message)
+      }
+    },
+    validations: {
+      message: {
+        required
       }
     }
   }

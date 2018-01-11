@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import Login from '@/components/login'
 import Dashboard from '@/components/dashboard'
 import Alba from '@/components/alba'
+import Video from '@/components/hightlights'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/alba',
       name: 'alba',
       component: Alba
+    },
+    {
+      path: '/video',
+      name: 'video',
+      component: Video
     }
   ]
 })
