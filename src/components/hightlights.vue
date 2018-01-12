@@ -7,6 +7,8 @@
       <div class="hija">
         <h1>No highlights</h1>
       </div>
+
+      o alba ca bere o qenee keqeee
     </div>
   </div>
 </template>
